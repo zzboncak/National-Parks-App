@@ -9,7 +9,31 @@
         <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
+        <h1>National Parks Finder</h1>
 
+        <form id="js-form">
+            <fieldset>
+                <label for="park-name">In what state do you want to see a list of parks?</label>
+                <input id="park-name" name="park-name" placeholder="ex. Yosemite" type="text">
+
+                <label for="park-limit">How many do you want to see?</label>
+                <input id="park-limit" name="park-limit" placeholder="10" type="number">
+                <button type="submit">Let's see some parks</button>
+            </fieldset>
+        </form>
+
+        <section class="results-container hidden">
+            <h2>Results:</h2>
+            <div class="results">
+                <div class="park">
+                    <h3 class="park-title">Yosemite</h3>
+                    <p class="park-description">A beautiful park</p>
+                    <a href="someUrl.gov">url</a>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="index.js"></script>
     </body>
 </html>
