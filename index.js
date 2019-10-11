@@ -10,7 +10,6 @@ function buildUrl(userParam, userLimit=10) {
     }
     let queryString = $.param(params);
     let url = baseUrl + "?" + queryString;
-    //console.log(url);
     return url;
 }
 
@@ -21,21 +20,25 @@ function watchForm() {
         let userParam = $('#park-name').val();
         let userLimit = $('#park-limit').val();
         let searchUrl;
-        if (userLimit !== "") {
-            searchUrl = buildUrl(userParam, userLimit);
-        }else {
-            searchUrl= buildUrl(userParam);
-        }
-        //console.log(searchUrl);
-        
-        fetch(searchUrl).then(response => {
-            if (response.ok) {
-                return response.json();
+
+        if(userParam == ""){
+            alert(`Please input a state`);
+        }else{
+            if (userLimit !== "") {
+                searchUrl = buildUrl(userParam, userLimit);
+            }else {
+                searchUrl= buildUrl(userParam);
             }
-            throw new Error(response.statusText)
-        })
-        .then(responseJson => displayResults(responseJson))
-        .catch(error => console.log(`Something went wrong: ${error.message}`));
+            
+            fetch(searchUrl).then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error(response.statusText)
+            })
+            .then(responseJson => displayResults(responseJson))
+            .catch(error => console.log(`Something went wrong: ${error.message}`));
+        }
     })
 }
 
@@ -52,9 +55,8 @@ function displayResults(responseJson) {
         <div class="park">
                     <h3 class="park-title">${parkName}</h3>
                     <p class="park-description">${parkDescription}</p>
-                    <a href="${parkUrl}">${parkUrl}</a>
+                    <a href="${parkUrl}" target="_blank">${parkUrl}</a>
                 </div>`);
-        //console.log(parkName);
     }
     $('.results-container').removeClass("hidden");
 }

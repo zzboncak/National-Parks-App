@@ -3,11 +3,28 @@ body {
 }
 
 body {
-    max-width: 500px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .hidden{
     display: none;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+input, label, button {
+    margin-top: 10px;
+}
+
+input, button {
+    border-radius: 5px;
+}
+
+.instructions {
+    font-size: 12px;
+    line-height: 0;
 }
